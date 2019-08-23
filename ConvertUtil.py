@@ -46,7 +46,7 @@ def translate_default_to_other(generate_path, excel_absolute_path, by_index=0):
             if translate_key == value:
                 strings[str_index].firstChild.data = table.cell(row, 1).value
 
-    f = open(generate_path, 'w')
+    f = open(generate_path, 'w', encoding='utf-8')
     dom.writexml(f, addindent='  ', encoding='utf-8')
     f.close()
 
@@ -59,7 +59,7 @@ def deal_with_excel_and_xml(excel_path, xml_path):
         os.mkdir(destinationPath)
     destinationPath = os.path.join(destinationPath, 'strings.xml')
     # 創建文件strings.xml
-    f = open(destinationPath, 'w')
+    f = open(destinationPath, 'w', encoding='utf-8')
     f.close()
     copy_default_xml(xml_path, destinationPath)
     translate_default_to_other(destinationPath, excel_path)
